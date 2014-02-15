@@ -21,7 +21,7 @@
  * @license     http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
  */
 
-require_once('src/engine/Shopware/Plugins/Local/Frontend/ZerebroInternetPaymentBarzahlen/Components/Barzahlen/Api/loader.php');
+require_once('src/engine/Shopware/Plugins/Local/Frontend/ZerintPaymentBarzahlen/Components/Barzahlen/Api/loader.php');
 
 define('SHOPID', '10483');
 define('PAYMENTKEY', 'de74310368a4718a48e0e244fbf3e22e2ae117f2');
