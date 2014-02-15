@@ -23,7 +23,7 @@
 
 class Shopware_Plugins_Frontend_ZerebroInternetPaymentBarzahlen_Bootstrap extends Shopware_Components_Plugin_Bootstrap {
 
-  const CURRENT_VERSION = '1.0.0';
+  const CURRENT_VERSION = '1.0.1';
 
   /**
    * Install methods. Calls sub methods for a successful installation.
@@ -305,10 +305,7 @@ class Shopware_Plugins_Frontend_ZerebroInternetPaymentBarzahlen_Bootstrap extend
     if(isset(Shopware()->Session()->BarzahlenResponse)) {
       $view = $args->getSubject()->View();
       $view->addTemplateDir(dirname(__FILE__) . '/Views/');
-      $view->assign('paymentSlipLink', Shopware()->Session()->BarzahlenResponse['payment-slip-link']);
       $view->assign('infotext1', Shopware()->Session()->BarzahlenResponse['infotext-1']);
-      $view->assign('infotext2', Shopware()->Session()->BarzahlenResponse['infotext-2']);
-      $view->assign('expirationNotice', Shopware()->Session()->BarzahlenResponse['expiration-notice']);
       $view->extendsTemplate('frontend/payment_barzahlen/finish.tpl');
       unset(Shopware()->Session()->BarzahlenResponse);
     }
@@ -325,19 +322,19 @@ class Shopware_Plugins_Frontend_ZerebroInternetPaymentBarzahlen_Bootstrap extend
     $payment = $this->Payment();
     $config = Shopware()->Plugins()->Frontend()->ZerebroInternetPaymentBarzahlen()->Config();
 
-    $description = '<img src="http://cdn.barzahlen.de/images/barzahlen_logo.png"/><br/>';
-    $description .= '<p id="payment_desc">Mit Abschluss der Bestellung erhalten Sie einen Zahlschein, den Sie sich ausdrucken oder auf Ihr Handy schicken lassen können. Bezahlen Sie den Online-Einkauf mit Hilfe des Zahlscheins in einem Barzahlen-Partnergeschäft in Ihrer Nähe.';
+    $description = '<img src="http://cdn.barzahlen.de/images/barzahlen_logo.png" style="height: 45px;"/><br/>';
+    $description .= '<p id="payment_desc">Mit Abschluss der Bestellung bekommen Sie einen Zahlschein angezeigt, den Sie sich ausdrucken oder auf Ihr Handy schicken lassen können. Bezahlen Sie den Online-Einkauf mit Hilfe des Zahlscheins an der Kasse einer Barzahlen-Partnerfiliale.';
 
     if($config->barzahlenSandbox) {
       $description .= '<br/><br/>Der <strong>Sandbox Modus</strong> ist aktiv. Allen getätigten Zahlungen wird ein Test-Zahlschein zugewiesen. Dieser kann nicht von unseren Einzelhandelspartnern verarbeitet werden.';
     }
 
     $description .= '</p>';
-    $description .= '<b>Eine Auswahl unserer Partner:</b><br/>';
+    $description .= '<b>Bezahlen Sie bei:</b>&nbsp;';
 
     for($i = 1; $i <= 10; $i++) {
       $count = str_pad($i,2,"0",STR_PAD_LEFT);
-      $description .= '<img src="http://cdn.barzahlen.de/images/barzahlen_partner_'.$count.'.png" alt="" />';
+      $description .= '<img src="http://cdn.barzahlen.de/images/barzahlen_partner_'.$count.'.png" alt="" style="vertical-align: middle; height: 25px;" />';
     }
 
     $newData = array('additionaldescription' => $description);
