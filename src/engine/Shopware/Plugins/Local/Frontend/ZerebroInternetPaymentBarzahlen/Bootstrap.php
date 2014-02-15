@@ -23,7 +23,7 @@
 
 class Shopware_Plugins_Frontend_ZerebroInternetPaymentBarzahlen_Bootstrap extends Shopware_Components_Plugin_Bootstrap {
 
-  const CURRENT_VERSION = '1.0.1';
+  const CURRENT_VERSION = '1.0.2';
 
   /**
    * Install methods. Calls sub methods for a successful installation.
@@ -247,7 +247,7 @@ class Shopware_Plugins_Frontend_ZerebroInternetPaymentBarzahlen_Bootstrap extend
       'source' => "Local",
       'description' => '<p><img src="' . $img . '" alt="Barzahlen" /></p> <p>Barzahlen bietet Ihren Kunden die Möglichkeit, online bar zu bezahlen. Sie werden in Echtzeit über die Zahlung benachrichtigt und profitieren von voller Zahlungsgarantie und neuen Kundengruppen. Sehen Sie wie Barzahlen funktioniert: <a href="http://www.barzahlen.de/partner/funktionsweise" target="_blank">http://www.barzahlen.de/partner/funktionsweise</a></p>',
       'license' => 'GNU GPL v3.0',
-      'copyright' => 'Copyright © 2012, Zerebro Internet GmbH',
+      'copyright' => 'Copyright (c) 2013, Zerebro Internet GmbH',
       'support' => 'support@barzahlen.de',
       'link' => 'http://www.barzahlen.de'
     );
